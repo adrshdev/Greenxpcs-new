@@ -1,41 +1,38 @@
-// Loading Animation
-window.addEventListener('load', function(){
-  const loadingOverlay = this.document.getElementById('loadingOverlay');
-  setTimeout(() => {
-    loadingOverlay.classList.add('hidden');
-  },1000)
-});
+window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+            }, 1000);
+        });
 
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
-// Header Scroll Effect
-const header = document.getElementById('header');
-window.addEventListener('scroll', function(){
-  if(window.scrollY > 100){
-    header.classList.add('scrolled');
-  }else{
-    header.classList.remove('scrolled');
-  }
-});
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
+        // Close mobile menu when clicking on nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
 
-// Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-hamburger.addEventListener('click', function(){
-  hamburger.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
-
-
-// Close Mobile Menu when Clicking on nav-links
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-  })
-});
-
-// Smooth scrolling for anchor links
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -201,7 +198,8 @@ document.querySelectorAll('.nav-link').forEach(link => {
         styleSheet.textContent = notificationStyles;
         document.head.appendChild(styleSheet);
 
-        // Parallax effect for hero section
+        // Parallax effect for hero section (disabled to prevent overlap issues)
+        /*
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
@@ -209,6 +207,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
                 hero.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
+        */
 
         // Dynamic greeting based on time
         function updateGreeting() {
@@ -315,4 +314,3 @@ document.querySelectorAll('.nav-link').forEach(link => {
         }, 3000);
 
         console.log('🐛 Greenx Pest Control Website Loaded Successfully! 🌿');
-   
